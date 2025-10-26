@@ -1,7 +1,7 @@
 package com.jk.labs.ai.sb.openai.api;
 
-import com.jk.labs.ai.sb.openai.dto.ChatRequest;
-import com.jk.labs.ai.sb.openai.dto.ChatResponse;
+import com.jk.labs.ai.sb.common.dto.ChatRequest;
+import com.jk.labs.ai.sb.common.dto.ChatResponse;
 import com.jk.labs.ai.sb.openai.service.ChatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -15,8 +15,8 @@
     <name>SpringBoot-AI-Solutions</name>
     <description>Demo project for Spring Boot</description>
     <modules>
+        <module>Spring-AI-Apps-Common</module>
         <module>Spring-AI-Apps-Parent</module>
-        <module>Spring-AI-OpenAI</module>
     </modules>
     <properties>
         <java.version>17</java.version>

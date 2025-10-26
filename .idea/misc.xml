@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Spring-AI-Ollama/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-AI-OpenAI/pom.xml" />
       </list>
     </option>
   </component>

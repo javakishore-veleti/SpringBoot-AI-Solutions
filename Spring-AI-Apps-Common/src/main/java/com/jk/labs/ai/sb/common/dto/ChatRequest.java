@@ -1,4 +1,4 @@
-package com.jk.labs.ai.sb.openai.dto;
+package com.jk.labs.ai.sb.common.dto;
 
 import lombok.Data;
 

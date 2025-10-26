@@ -1,7 +1,7 @@
 package com.jk.labs.ai.sb.openai.service;
 
-import com.jk.labs.ai.sb.openai.dto.ChatRequest;
-import com.jk.labs.ai.sb.openai.dto.ChatResponse;
+import com.jk.labs.ai.sb.common.dto.ChatRequest;
+import com.jk.labs.ai.sb.common.dto.ChatResponse;
 
 public interface ChatService {
 

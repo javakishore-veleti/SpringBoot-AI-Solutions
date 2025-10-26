@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Spring-AI-Apps-Common" />
       </profile>
-      <profile name="Annotation profile for SpringBoot-AI-Solutions" enabled="true">
+      <profile name="Annotation profile for Spring-AI-OpenAI" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -22,6 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Spring-AI-Apps-Common" options="-parameters" />
       <module name="Spring-AI-Apps-Parent" options="-parameters" />
       <module name="Spring-AI-Ollama" options="-parameters" />
       <module name="Spring-AI-OpenAI" options="-parameters" />
