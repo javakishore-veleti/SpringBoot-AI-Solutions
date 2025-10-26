@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.jk.labs.ai.sb.common.prompts_engg.memory.ChatMemoryChatClientConfig.BEAN_ID_CHAT_MEMORY_CLIENT;
+import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 
 @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
 @Slf4j
@@ -53,7 +54,7 @@ public class ChatServiceImpl implements ChatService {
     public void executeUserMessageWithMemory(AppChatRequest request, AppChatResponse response) {
         LOGGER.info("STARTED executeUserMessageWithMemory");
 
-        String llmResponse = memoryChatClient.prompt(request.getUserMessage())
+        String llmResponse = memoryChatClient.prompt().user(request.getUserMessage()).advisors(advisorSpec -> advisorSpec.param(CONVERSATION_ID, request.getUserName()))
                 .call().content();
         response.addResult("UserMessage", request.getUserMessage());
         response.addResult("SystemResponse", llmResponse);
