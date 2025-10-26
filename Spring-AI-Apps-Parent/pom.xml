@@ -32,6 +32,11 @@
             <version>2.19.2</version>
         </dependency>
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.13</version>
+        </dependency>
+        <dependency>
             <groupId>com.jk.labs.ai.spring-boot</groupId>
             <artifactId>Spring-AI-Apps-Common</artifactId>
             <version>${project.version}</version>

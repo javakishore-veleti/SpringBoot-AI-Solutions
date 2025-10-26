@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: Spring-AI-Ollama
+  ai:
+    model:
+      chat: ollama
+    ollama:
+      chat:
+        options:
+          model: llama3.2:1b
+      base-url: http://localhost:11434
 
 logging:
   pattern:
