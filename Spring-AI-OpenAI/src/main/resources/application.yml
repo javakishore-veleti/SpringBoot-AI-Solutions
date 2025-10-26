@@ -1,0 +1,8 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Spring-AI-OpenAI
+  ai:
+    openai:
+      api-key: ${MY_OPENAI_API_KEY:UN_DEFINED_OPENAI_API_KEY}
