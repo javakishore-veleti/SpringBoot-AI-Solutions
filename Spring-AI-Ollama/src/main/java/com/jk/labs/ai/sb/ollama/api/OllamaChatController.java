@@ -1,7 +1,7 @@
 package com.jk.labs.ai.sb.ollama.api;
 
-import com.jk.labs.ai.sb.common.dto.ChatRequest;
-import com.jk.labs.ai.sb.common.dto.ChatResponse;
+import com.jk.labs.ai.sb.common.dto.AppChatRequest;
+import com.jk.labs.ai.sb.common.dto.AppChatResponse;
 import com.jk.labs.ai.sb.ollama.service.OllamaChatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +26,13 @@ public class OllamaChatController {
     }
 
     @PostMapping(path = "/chat/hello")
-    public ResponseEntity<ChatResponse> executeUserMessage(@RequestBody ChatRequest chatRequest) {
+    public ResponseEntity<AppChatResponse> executeUserMessage(@RequestBody AppChatRequest appChatRequest) {
         LOGGER.info("STARTED executeUserMessage API");
 
-        ChatResponse chatResponse = new ChatResponse();
-        chatService.executeUserMessage(chatRequest, chatResponse);
+        AppChatResponse appChatResponse = new AppChatResponse();
+        chatService.executeUserMessage(appChatRequest, appChatResponse);
 
         LOGGER.info("COMPLETED executeUserMessage API");
-        return ResponseEntity.ok(chatResponse);
+        return ResponseEntity.ok(appChatResponse);
     }
 }

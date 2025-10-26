@@ -1,7 +1,7 @@
 package com.jk.labs.ai.sb.ollama.service.impl;
 
-import com.jk.labs.ai.sb.common.dto.ChatRequest;
-import com.jk.labs.ai.sb.common.dto.ChatResponse;
+import com.jk.labs.ai.sb.common.dto.AppChatRequest;
+import com.jk.labs.ai.sb.common.dto.AppChatResponse;
 import com.jk.labs.ai.sb.ollama.service.OllamaChatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class OllamaChatServiceImpl implements OllamaChatService {
     private ChatClient chatClient;
 
     @Override
-    public void executeUserMessage(ChatRequest request, ChatResponse response) {
+    public void executeUserMessage(AppChatRequest request, AppChatResponse response) {
         LOGGER.info("STARTED executeUserMessage");
 
         String ollmResponse = chatClient.prompt(request.getUserMessage()).call().content();

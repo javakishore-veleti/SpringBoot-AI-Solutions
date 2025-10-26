@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class ChatResponse {
+public class AppChatResponse {
 
     private Map<String, Object> results;
 
-    public ChatResponse() {
+    public AppChatResponse() {
         results = new HashMap<>();
     }
 

@@ -1,7 +1,8 @@
 package com.jk.labs.ai.sb.openai.service.impl;
 
-import com.jk.labs.ai.sb.common.dto.ChatRequest;
-import com.jk.labs.ai.sb.common.dto.ChatResponse;
+import com.jk.labs.ai.sb.common.dto.AppChatRequest;
+import com.jk.labs.ai.sb.common.dto.AppChatResponse;
+import com.jk.labs.ai.sb.common.prompts_engg.advisors.JkAppTokenAuditUsageAdvisor;
 import com.jk.labs.ai.sb.openai.service.ChatService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -24,14 +25,15 @@ public class ChatServiceImpl implements ChatService {
     private ChatClient chatClient;
 
     @Override
-    public void executeUserMessage(ChatRequest request, ChatResponse response) {
+    public void executeUserMessage(AppChatRequest request, AppChatResponse response) {
         LOGGER.info("STARTED executeUserMessage");
 
         String llmResponse = chatClient.prompt(request.getUserMessage()).
                 advisors(
                         List.of(
                                 new SimpleLoggerAdvisor(),
-                                new SafeGuardAdvisor(List.of("Ford", "BMW"))))
+                                new SafeGuardAdvisor(List.of("Ford", "BMW")),
+                                new JkAppTokenAuditUsageAdvisor()))
                 .call().content();
         response.addResult("UserMessage", request.getUserMessage());
         response.addResult("SystemResponse", llmResponse);
