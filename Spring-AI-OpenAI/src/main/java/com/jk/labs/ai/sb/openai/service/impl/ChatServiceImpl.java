@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.jk.labs.ai.sb.common.prompts_engg.memory.ChatMemoryChatClientConfig.BEAN_ID_CHAT_MEMORY_CLIENT;
+import static com.jk.labs.ai.sb.common.prompts_engg.memory.ChatMemoryChatClientConfig.BEAN_ID_CHAT_MEMORY_LIMIT_CLIENT;
 import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 
 @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
@@ -32,6 +33,10 @@ public class ChatServiceImpl implements ChatService {
     @Autowired
     @Qualifier(BEAN_ID_CHAT_MEMORY_CLIENT)
     private ChatClient memoryChatClient;
+
+    @Autowired
+    @Qualifier(BEAN_ID_CHAT_MEMORY_LIMIT_CLIENT)
+    private ChatClient memoryLimitChatClient;
 
     @Override
     public void executeUserMessage(AppChatRequest request, AppChatResponse response) {
@@ -61,4 +66,25 @@ public class ChatServiceImpl implements ChatService {
 
         LOGGER.info("COMPLETED executeUserMessageWithMemory llmResponse {}", llmResponse);
     }
+
+    @Override
+    public void executeUserMessageWithMemoryLimits(AppChatRequest request, AppChatResponse response) {
+        LOGGER.info("STARTED executeUserMessageWithMemoryLimits");
+
+        executeUserMessageCommon(request, response, memoryLimitChatClient);
+
+        LOGGER.info("COMPLETED executeUserMessageWithMemoryLimits llmResponse {}", response.getResults());
+    }
+
+    protected void executeUserMessageCommon(AppChatRequest request, AppChatResponse response, ChatClient chatClientToUse) {
+        LOGGER.info("STARTED executeUserMessageCommon");
+
+        String llmResponse = chatClientToUse.prompt().user(request.getUserMessage()).advisors(advisorSpec -> advisorSpec.param(CONVERSATION_ID, request.getUserName()))
+                .call().content();
+        response.addResult("UserMessage", request.getUserMessage());
+        response.addResult("SystemResponse", llmResponse);
+
+        LOGGER.info("COMPLETED executeUserMessageCommon llmResponse {}", llmResponse);
+    }
+
 }

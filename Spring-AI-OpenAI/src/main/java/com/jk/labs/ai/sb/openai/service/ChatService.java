@@ -8,4 +8,6 @@ public interface ChatService {
     void executeUserMessage(AppChatRequest request, AppChatResponse response);
 
     void executeUserMessageWithMemory(AppChatRequest request, AppChatResponse response);
+
+    void executeUserMessageWithMemoryLimits(AppChatRequest request, AppChatResponse response);
 }

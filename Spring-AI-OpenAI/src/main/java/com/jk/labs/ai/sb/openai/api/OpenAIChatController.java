@@ -43,4 +43,15 @@ public class OpenAIChatController {
         return ResponseEntity.ok(appChatResponse);
     }
 
+    @PostMapping(path = "/chat-memory-with-limits/hello")
+    public ResponseEntity<AppChatResponse> executeUserMessageWithMemoryWithLimits(@RequestBody AppChatRequest appChatRequest) {
+        LOGGER.info("STARTED executeUserMessageWithMemoryWithLimits API");
+
+        AppChatResponse appChatResponse = new AppChatResponse();
+        chatService.executeUserMessageWithMemoryLimits(appChatRequest, appChatResponse);
+
+        LOGGER.info("COMPLETED executeUserMessageWithMemoryWithLimits API");
+        return ResponseEntity.ok(appChatResponse);
+    }
+
 }

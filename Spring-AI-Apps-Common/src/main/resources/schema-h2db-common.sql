@@ -1,7 +1,7 @@
 CREATE TABLE SPRING_AI_CHAT_MEMORY (
-   conversation_id VARCHAR(36) NOT NULL,
+   conversation_id VARCHAR(1000) NOT NULL,
     content LONGVARCHAR NOT NULL,
-    type VARCHAR(10),
+    type VARCHAR(50),
     "timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 
 ) ;
