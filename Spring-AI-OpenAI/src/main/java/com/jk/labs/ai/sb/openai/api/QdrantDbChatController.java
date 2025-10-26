@@ -2,7 +2,7 @@ package com.jk.labs.ai.sb.openai.api;
 
 import com.jk.labs.ai.sb.common.dto.AppChatRequest;
 import com.jk.labs.ai.sb.common.dto.AppChatResponse;
-import com.jk.labs.ai.sb.openai.service.ChatService;
+import com.jk.labs.ai.sb.openai.service.vector_db.qdrant.QdrantChatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,14 @@ public class QdrantDbChatController {
     private static final Logger LOGGER = LoggerFactory.getLogger(QdrantDbChatController.class);
 
     @Autowired
-    private ChatService chatService;
+    private QdrantChatService qdrantChatService;
 
     @PostMapping(path = "/chat/hello")
     public ResponseEntity<AppChatResponse> executeUserMessage(@RequestBody AppChatRequest appChatRequest) {
         LOGGER.info("STARTED executeUserMessage API");
 
         AppChatResponse appChatResponse = new AppChatResponse();
-        chatService.executeUserMessage(appChatRequest, appChatResponse);
+        qdrantChatService.executeUserMessage(appChatRequest, appChatResponse);
 
         LOGGER.info("COMPLETED executeUserMessage API");
         return ResponseEntity.ok(appChatResponse);
