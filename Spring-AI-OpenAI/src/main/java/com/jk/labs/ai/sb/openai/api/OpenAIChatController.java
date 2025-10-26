@@ -32,4 +32,15 @@ public class OpenAIChatController {
         return ResponseEntity.ok(appChatResponse);
     }
 
+    @PostMapping(path = "/chat-memory/hello")
+    public ResponseEntity<AppChatResponse> executeUserMessageWithMemory(@RequestBody AppChatRequest appChatRequest) {
+        LOGGER.info("STARTED executeUserMessageWithMemory API");
+
+        AppChatResponse appChatResponse = new AppChatResponse();
+        chatService.executeUserMessageWithMemory(appChatRequest, appChatResponse);
+
+        LOGGER.info("COMPLETED executeUserMessageWithMemory API");
+        return ResponseEntity.ok(appChatResponse);
+    }
+
 }

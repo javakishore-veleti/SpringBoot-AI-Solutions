@@ -6,4 +6,6 @@ import com.jk.labs.ai.sb.common.dto.AppChatResponse;
 public interface ChatService {
 
     void executeUserMessage(AppChatRequest request, AppChatResponse response);
+
+    void executeUserMessageWithMemory(AppChatRequest request, AppChatResponse response);
 }
