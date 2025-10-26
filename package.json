@@ -1,0 +1,11 @@
+{
+  "name": "spring-boot-ai-solutions",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "local-containers-start": "sh ./devops/ephemeral/local_containers_start.sh",
+    "local-containers-shutdown": "sh ./devops/ephemeral/local_containers_shutdown.sh",
+    "start:containers:debug": "sh -x ./devops/ephemeral/local_containers_start.sh"
+  }
+}
+

@@ -1,0 +1,9 @@
+#file: noinspection SpringBootApplicationYaml
+spring:
+  ai:
+    vectorstore:
+      qdrant:
+          host: localhost
+          port: 6334
+          collection-name: spring_ai_apps_collection
+          initialize-schema: true
