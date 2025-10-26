@@ -17,6 +17,7 @@
     <modules>
         <module>Spring-AI-Apps-Common</module>
         <module>Spring-AI-Apps-Parent</module>
+        <module>Spring-AI-AWS-Bedrock</module>
     </modules>
     <properties>
         <java.version>17</java.version>

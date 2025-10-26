@@ -17,12 +17,14 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="Spring-AI-OpenAI" />
+        <module name="Spring-AI-AWS-Bedrock" />
         <module name="Spring-AI-Ollama" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Spring-AI-AWS-Bedrock" options="-parameters" />
       <module name="Spring-AI-Apps-Common" options="-parameters" />
       <module name="Spring-AI-Apps-Parent" options="-parameters" />
       <module name="Spring-AI-Ollama" options="-parameters" />

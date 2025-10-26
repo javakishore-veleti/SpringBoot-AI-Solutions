@@ -1,0 +1,23 @@
+server:
+  port: 8092
+spring:
+  application:
+    name: Spring-AI-AWS-Bedrock
+  # application.properties in child module
+  # This value is updated from SPring-AI-Apps-Paremnt <build> resources filtering config
+  profiles.active: @spring.profiles.active@
+  ai:
+    bedrock:
+      converse:
+        chat:
+          options:
+            # AWS Bedrock Anthropic Claude Sonnet 4
+            model: anthropic.claude-sonnet-4-20250514-v1:0
+      aws:
+        region: us-east-1
+        access-key: ${MY_AWS_ACCESS_KEY:UNKNOWN_AWS_ACCESS_KEY}
+        secret-key: ${MY_AWS_SECRET_KEY:UNKNOWN_AWS_SECRET_KEY}
+
+    model:
+      chat: bedrock-converse
+

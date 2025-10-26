@@ -6,7 +6,6 @@ spring:
   ai:
     openai:
       api-key: ${MY_OPENAPI_KEY:UN_DEFINED_OPENAI_API_KEY}
-
-logging:
-  pattern:
-    console: "%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n"
+  # application.properties in child module
+  # This value is updated from SPring-AI-Apps-Paremnt <build> resources filtering config
+  profiles.active: @spring.profiles.active@
