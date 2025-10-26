@@ -7,8 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -23,7 +27,12 @@ public class ChatServiceImpl implements ChatService {
     public void executeUserMessage(ChatRequest request, ChatResponse response) {
         LOGGER.info("STARTED executeUserMessage");
 
-        String llmResponse = chatClient.prompt(request.getUserMessage()).call().content();
+        String llmResponse = chatClient.prompt(request.getUserMessage()).
+                advisors(
+                        List.of(
+                                new SimpleLoggerAdvisor(),
+                                new SafeGuardAdvisor(List.of("Ford", "BMW"))))
+                .call().content();
         response.addResult("UserMessage", request.getUserMessage());
         response.addResult("SystemResponse", llmResponse);
 
