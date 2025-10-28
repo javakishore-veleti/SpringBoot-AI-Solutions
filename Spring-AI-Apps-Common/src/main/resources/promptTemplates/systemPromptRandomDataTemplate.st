@@ -4,3 +4,4 @@ then reply with "I don't know".
 DOCUMENTS:
 ----------
 {documents}
+----------

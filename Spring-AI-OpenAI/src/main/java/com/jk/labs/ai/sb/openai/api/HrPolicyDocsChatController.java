@@ -1,0 +1,36 @@
+package com.jk.labs.ai.sb.openai.api;
+
+import com.jk.labs.ai.sb.common.dto.AppChatRequest;
+import com.jk.labs.ai.sb.common.dto.AppChatResponse;
+import com.jk.labs.ai.sb.openai.service.vector_db.qdrant.QdrantHrPolicDocsChatService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Profile("vector-db-qdrant")
+@RestController
+@RequestMapping(path = "/sb-ai/openai/qdrant/hr-policy-documents/v1", produces = "application/json")
+public class HrPolicyDocsChatController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(HrPolicyDocsChatController.class);
+
+    @Autowired
+    private QdrantHrPolicDocsChatService docChatService;
+
+    @PostMapping(path = "/chat")
+    public ResponseEntity<AppChatResponse> executeUserMessage(@RequestBody AppChatRequest appChatRequest) {
+        LOGGER.info("STARTED executeUserMessage API");
+
+        AppChatResponse appChatResponse = new AppChatResponse();
+        docChatService.executeUserMessage(appChatRequest, appChatResponse);
+
+        LOGGER.info("COMPLETED executeUserMessage API");
+        return ResponseEntity.ok(appChatResponse);
+    }
+}
