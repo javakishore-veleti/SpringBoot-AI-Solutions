@@ -39,7 +39,7 @@ public class QdrantHrPolicDocsChatServiceImpl implements QdrantHrPolicDocsChatSe
     @Override
     public void executeUserMessage(AppChatRequest request, AppChatResponse response) {
         SearchRequest searchRequest = SearchRequest.builder()
-                .query(request.getUserMessage())
+                .query(request.getUserMessage()).topK(5).similarityThreshold(0.5)
                 .build();
         List<Document> similarDocs = vectorStore.similaritySearch(searchRequest);
         similarDocs.forEach(doc -> LOGGER.info("Found similar doc: {}", doc.getText()));
