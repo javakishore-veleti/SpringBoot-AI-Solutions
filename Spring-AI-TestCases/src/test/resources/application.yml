@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: ai-apps-common-default
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: spring-ai-apps-user
+    password: spring-ai-apps-user
+    url: jdbc:h2:file:~/spring-ai-apps-chat-memory;AUTO_SERVER=true
+  ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+            schema: classpath:/schema-h2db-common.sql
+    openai:
+      api-key: ${MY_OPENAPI_KEY:UN_DEFINED_OPENAI_API_KEY}
+
+logging:
+  pattern:
+    console: "%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n"
+
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+
+management.endpoints.web.exposure.include: '*'
+management.endpoint.health.show-details: always
+management.tracing.sampling.probability: 1.0
+
+
+opentelemetry:
+  exporter:
+    oltp:
+      endpoint: http://localhost:4317

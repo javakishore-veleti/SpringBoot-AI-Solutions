@@ -27,14 +27,14 @@ public class ChatServiceImpl implements ChatService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ChatServiceImpl.class);
 
-    @Autowired
+    @Autowired(required = false)
     private ChatClient chatClient;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier(BEAN_ID_CHAT_MEMORY_CLIENT)
     private ChatClient memoryChatClient;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier(BEAN_ID_CHAT_MEMORY_LIMIT_CLIENT)
     private ChatClient memoryLimitChatClient;
 
