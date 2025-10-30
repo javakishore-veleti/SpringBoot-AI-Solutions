@@ -7,9 +7,7 @@ services:
       - '6334:6334'
     networks:
       spring-ai-apps-common-network:
-        aliases:
-          - qdrant
 
 networks:
   spring-ai-apps-common-network:
-    driver: bridge
+    external: true

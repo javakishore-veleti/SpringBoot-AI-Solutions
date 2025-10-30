@@ -9,12 +9,10 @@ services:
     restart: unless-stopped
     networks:
       spring-ai-apps-common-network:
-        aliases:
-          - grafana
 
 networks:
   spring-ai-apps-common-network:
-    driver: bridge
+    external: true
 
 volumes:
   grafana-storage:

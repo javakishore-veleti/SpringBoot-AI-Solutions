@@ -10,12 +10,10 @@ services:
     restart: unless-stopped
     networks:
       spring-ai-apps-common-network:
-        aliases:
-          - prometheus
 
 networks:
   spring-ai-apps-common-network:
-    driver: bridge
+    external: true
 
 volumes:
   prometheus_data:

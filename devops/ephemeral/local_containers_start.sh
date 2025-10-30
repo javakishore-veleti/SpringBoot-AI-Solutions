@@ -5,7 +5,11 @@ THIS_DIR="$(cd "$(dirname "$0")" >/dev/null 2>&1 && pwd)"
 
 # List compose files relative to THIS_DIR (space-separated). Add more entries as needed.
 # grafana/docker-compose.yml
-COMPOSE_LIST="vector-dbs/qdrant/docker-compose.yml observability/prometheus/docker-compose.yml observability/grafana/docker-compose.yml "
+COMPOSE_LIST="vector-dbs/qdrant/docker-compose.yml observability/prometheus/docker-compose.yml observability/grafana/docker-compose.yml observability/jaeger/docker-compose.yml"
+
+docker network rm spring-ai-apps-common-network || true
+
+docker network create spring-ai-apps-common-network || true
 
 for rel in $COMPOSE_LIST; do
   # resolve relative path to absolute under THIS_DIR unless it's already absolute
