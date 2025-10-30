@@ -1,0 +1,21 @@
+services:
+  spring-ai-apps-grafana:
+    image: grafana/grafana:latest
+    container_name: spring-ai-apps-grafana
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    networks:
+      spring-ai-apps-common-network:
+        aliases:
+          - grafana
+
+networks:
+  spring-ai-apps-common-network:
+    driver: bridge
+
+volumes:
+  grafana-storage:
+    driver: local
